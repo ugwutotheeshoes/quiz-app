@@ -3,19 +3,14 @@ import React, { useState } from "react";
 
 const Questions = ({ quizQuestions }) => {
   const [finalResult, setFinalResult] = useState(true);
-  const [isCorrect, setIsCorrect] = useState(true);
-  // const [data, setData] = useState({ one: "", two: "", three: "", four: "" });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
 
   const handleChange = (e) => {
     e.preventDefault();
     if (e.target.innerText === quizQuestions[currentQuestion].answer) {
-      console.log("answer is correct");
       setScore(score + 1);
-    } else {
-      console.log("answer is not correct");
-    }
+    } 
   };
 
   const handleSubmit = (e) => {
