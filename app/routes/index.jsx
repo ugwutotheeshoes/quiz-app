@@ -8,9 +8,7 @@ export default function Index() {
   const [toShow, setToShow] = useState(true);
 
   const client = new Client();
-
   const databases = new Databases(client);
-
   client
     .setEndpoint("http://localhost/v1") // Your API Endpoint
     .setProject("639e28517aca501db710"); // Your project ID
