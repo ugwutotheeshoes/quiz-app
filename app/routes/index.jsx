@@ -4,7 +4,7 @@ import Questions from "./Questions";
 import { Client, Databases } from "appwrite";
 
 export default function Index() {
-  const [menuItems, setMenuItems] = useState([""]);
+  const [quizQuestions, setQuizQuestions] = useState([""]);
   const [toShow, setToShow] = useState(true);
 
   const client = new Client();
@@ -20,7 +20,7 @@ export default function Index() {
   const updateData = () => {
     promise.then(
       function (response) {
-        setMenuItems(response.documents);
+        setQuizQuestions(response.documents);
       },
       function (error) {
         console.log(error); // Failure
@@ -43,7 +43,7 @@ export default function Index() {
           </button>
         </div>
       ) : (
-        <Questions menuItems={menuItems} />
+        <Questions quizQuestions={quizQuestions} />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import "../style/index.css";
 import React, { useState } from "react";
 
-const Questions = ({ menuItems }) => {
+const Questions = ({ quizQuestions }) => {
   const [finalResult, setFinalResult] = useState(true);
   const [isCorrect, setIsCorrect] = useState(true);
   // const [data, setData] = useState({ one: "", two: "", three: "", four: "" });
@@ -10,7 +10,7 @@ const Questions = ({ menuItems }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    if (e.target.innerText === menuItems[currentQuestion].answer) {
+    if (e.target.innerText === quizQuestions[currentQuestion].answer) {
       console.log("answer is correct");
       setScore(score + 1);
     } else {
@@ -21,7 +21,7 @@ const Questions = ({ menuItems }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (currentQuestion + 1 < menuItems.length) {
+    if (currentQuestion + 1 < quizQuestions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setFinalResult(false);
@@ -33,21 +33,21 @@ const Questions = ({ menuItems }) => {
         <div className="questions">
           <div className="section-container">
             <h2>
-              Questions {currentQuestion + 1} out of {menuItems.length}
+              Questions {currentQuestion + 1} out of {quizQuestions.length}
             </h2>
-            <p>{menuItems[currentQuestion].question}?</p>
+            <p>{quizQuestions[currentQuestion].question}?</p>
             <div className="section">
               <button onClick={handleChange} name="one">
-                {menuItems[currentQuestion].one}
+                {quizQuestions[currentQuestion].one}
               </button>
               <button onClick={handleChange} name="two">
-                {menuItems[currentQuestion].two}
+                {quizQuestions[currentQuestion].two}
               </button>
               <button onClick={handleChange} name="three">
-                {menuItems[currentQuestion].three}
+                {quizQuestions[currentQuestion].three}
               </button>
               <button onClick={handleChange} name="four">
-                {menuItems[currentQuestion].four}
+                {quizQuestions[currentQuestion].four}
               </button>
             </div>
           </div>
@@ -58,7 +58,7 @@ const Questions = ({ menuItems }) => {
       ) : (
         <div className="final">
           <p>
-            Your final score is {score} out of {menuItems.length}
+            Your final score is {score} out of {quizQuestions.length}
           </p>
           <button type="button" onClick={() => window.location.reload()}>
             reset score!
